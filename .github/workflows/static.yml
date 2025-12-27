@@ -1,0 +1,43 @@
+name: Deploy Strive Landing Page
+
+on:
+  # Executa o deploy sempre que houver um push na branch main
+  push:
+    branches: ["main"]
+
+  # Permite executar o deploy manualmente pela aba Actions
+  workflow_dispatch:
+
+# Define as permissões necessárias para o GITHUB_TOKEN realizar o deploy
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Garante que apenas um deploy ocorra por vez
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps: deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Define que o upload será da raiz do projeto (.)
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
