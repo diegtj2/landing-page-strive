@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .hero-gradient { background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); }
+        .slate-gradient { background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); }
         .modal-animate { animation: fadeIn 0.3s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         .hidden-field { display: none !important; visibility: hidden !important; }
@@ -39,15 +39,14 @@
         </nav>
     </header>
 
-    <section id="features" class="relative pt-40 pb-20 px-6 hero-gradient overflow-hidden">
+    <section id="features" class="relative pt-40 pb-20 px-6 slate-gradient overflow-hidden">
         <div class="max-w-4xl mx-auto text-center relative z-10">
             <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6" data-i18n="heroTitle">
                 Master the conversation & <br>
                 <span class="text-indigo-400">Land the job.</span>
             </h1>
             <p class="text-lg md:text-xl text-slate-400 mb-10 leading-relaxed" data-i18n="heroSubtitle">
-                Strive is an AI interview mentor currently <strong>under development</strong>. 
-                Designed to help you prepare through realistic simulations and intelligent feedback.
+                Strive is an AI-powered interview mentor engineered to bridge the gap between preparation and performance. Practice with high-fidelity voice simulations, receive data-driven feedback, and master the art of the interview.
             </p>
             <button onclick="openWaitlist('Hero Banner')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-full font-bold text-lg inline-flex items-center gap-2 transition-all transform hover:scale-105 shadow-lg shadow-indigo-500/20" data-i18n="heroBtn">
                 🚀 Get Early Access
@@ -56,7 +55,27 @@
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px]"></div>
     </section>
 
-    <section id="pricing" class="py-24 px-6 bg-[#0B0E14]">
+    <section id="features-detail" class="py-24 px-6 bg-[#0B0E14]">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
+            <div class="space-y-4">
+                <div class="text-indigo-500 text-3xl">🎙️</div>
+                <h3 class="text-xl font-bold" data-i18n="voiceLabel">Ultra-Realistic Voice</h3>
+                <p class="text-slate-400 text-sm leading-relaxed" data-i18n="voiceText">Natural voice simulations with low latency to replicate the pressure of a real interview.</p>
+            </div>
+            <div class="space-y-4">
+                <div class="text-indigo-500 text-3xl">📄</div>
+                <h3 class="text-xl font-bold" data-i18n="CVlabel">CV Deep Integration</h3>
+                <p class="text-slate-400 text-sm leading-relaxed" data-i18n="CVtext">Send us your resume and let our AI generate specific technical questions related to your professional background.</p>
+            </div>
+            <div class="space-y-4">
+                <div class="text-indigo-500 text-3xl">📈</div>
+                <h3 class="text-xl font-bold" data-i18n="analyticsLabel">Actionable Analytics</h3>
+                <p class="text-slate-400 text-sm leading-relaxed" data-i18n="analyticsText">Not just feedback, but a detailed action plan with areas for improvement and metrics for progress.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-24 px-6 slate-gradient">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl font-bold text-center mb-16" data-i18n="pricingHeader">Planned Pricing (Coming Soon)</h2>
             <div class="grid md:grid-cols-3 gap-8">
@@ -123,7 +142,7 @@
         </div>
     </div>
 
-    <footer class="bg-slate-900 py-12 px-6 border-t border-white/5 text-center">
+    <footer class="bg-[#0B0E14] py-12 px-6 border-t border-white/5 text-center">
         <p class="text-slate-500 text-sm" data-i18n="footer">© 2025 Strive AI. All rights reserved. Currently in development phase.</p>
     </footer>
 
@@ -134,7 +153,7 @@
                 navFeatures: 'Recursos',
                 navPricing: 'Preços',
                 heroTitle: 'Domine a conversa & <br> <span class="text-indigo-400">Conquiste a vaga.</span>',
-                heroSubtitle: 'Strive é um mentor de entrevistas com IA em <strong>desenvolvimento</strong>. Projetado para te preparar com simulações realistas.',
+                heroSubtitle: 'Strive é um mentor de entrevistas com IA, desenvolvido para preencher a lacuna entre preparação e desempenho. Pratique com simulações de voz de alta fidelidade, receba feedback baseado em dados e domine a arte da entrevista.',
                 heroBtn: '🚀 Obter Acesso Antecipado',
                 pricingHeader: 'Preços Planejados (Em Breve)',
                 tier1Name: 'Pro 7 Dias',
@@ -162,7 +181,13 @@
                 plan7Price: '84,99 R$',
                 planByokPrice: '49,99 R$',
                 planMonthlyPrice: '169,99 R$',
-                placeholderName: 'Primeiro Nome'
+                placeholderName: 'Primeiro Nome',
+                analyticsLabel: 'Análises práticas',
+                analyticsText: 'Não apenas feedback, mas um plano de ação detalhado com áreas de melhoria e métricas de progresso.',
+                voiceLabel: 'Voz ultrarrealista',
+                voiceText: 'Simulações de voz natural com baixa latência para reproduzir a pressão de uma entrevista real.',
+                CVlabel: 'Integração de currículo',
+                CVtext: 'Envie o seu currículo e deixe nossa IA gerar perguntas técnicas específicas relacionadas à sua experiência profissional.'
             }
         };
 
