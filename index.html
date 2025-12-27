@@ -235,9 +235,14 @@
             if (e.target.elements.b_phone.value !== "" || isProcessing) return;
 
             const isPt = navigator.language === 'pt-BR';
-            const name = document.getElementById('userName').value;
-            const email = document.getElementById('userEmail').value;
+            const name = document.getElementById('userName').value.trim();
+            const email = document.getElementById('userEmail').value.trim().toLowerCase();
             const btn = document.getElementById('submitBtn');
+
+            if (!name || !email) {
+                alert("Please fill in all fields correctly.");
+                return;
+            }
 
             isProcessing = true;
             btn.disabled = true;
