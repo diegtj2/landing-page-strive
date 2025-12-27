@@ -3,7 +3,7 @@ name: Deploy Strive Landing Page
 on:
   # Executa o deploy sempre que houver um push na branch main
   push:
-    branches: ["main"]
+    branches: ["master"]
 
   # Permite executar o deploy manualmente pela aba Actions
   workflow_dispatch:
