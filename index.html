@@ -14,60 +14,63 @@
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         .hidden-field { display: none !important; visibility: hidden !important; }
         [data-i18n] { transition: opacity 0.2s; }
+        
+        /* Ajuste fino para o header fixo não sobrepor o conteúdo no mobile */
+        :target { scroll-margin-top: 120px; }
     </style>
 </head>
 <body class="bg-[#0B0E14] text-white antialiased">
 
-    <header class="fixed top-0 w-full z-50 bg-[#0B0E14]/80 backdrop-blur-md border-b border-white/10">
-        <div id="dev-banner" class="w-full bg-amber-300 text-black text-center text-sm py-2 px-4 font-bold" data-i18n="devBanner">
-            🛠️ UNDER DEVELOPMENT: We are currently architecting the Strive engine. Join the waitlist for the Early Access.
+    <header class="fixed top-0 w-full z-50 bg-[#0B0E14]/90 backdrop-blur-md border-b border-white/10">
+        <div id="dev-banner" class="w-full bg-amber-300 text-black text-center text-[10px] sm:text-sm py-2 px-4 font-bold leading-tight" data-i18n="devBanner">
+            🛠️ UNDER DEVELOPMENT: We are currently architecting the Strive engine. Join the waitlist for Early Access.
         </div>
         
-        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <div class="bg-indigo-600 p-1.5 rounded-lg">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="white" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                 </div>
-                <span class="text-xl font-bold tracking-tight">STRIVE</span>
+                <span class="text-lg sm:text-xl font-bold tracking-tight">STRIVE</span>
             </div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+            <div class="flex space-x-4 sm:space-x-8 text-xs sm:text-sm font-medium text-slate-300">
                 <a href="#features" class="hover:text-white transition" data-i18n="navFeatures">Features</a>
                 <a href="#pricing" class="hover:text-white transition" data-i18n="navPricing">Pricing</a>
             </div>
         </nav>
     </header>
 
-    <section id="features" class="relative pt-40 pb-20 px-6 slate-gradient overflow-hidden">
+    <section id="features" class="relative pt-32 sm:pt-48 pb-16 sm:pb-24 px-6 slate-gradient overflow-hidden">
         <div class="max-w-4xl mx-auto text-center relative z-10">
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6" data-i18n="heroTitle">
+            <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight" data-i18n="heroTitle">
                 Master the conversation & <br>
                 <span class="text-indigo-400">Land the job.</span>
             </h1>
-            <p class="text-lg md:text-xl text-slate-400 mb-10 leading-relaxed" data-i18n="heroSubtitle">
-                Strive is an AI-powered interview mentor engineered to bridge the gap between preparation and performance. Practice with high-fidelity voice simulations, receive data-driven feedback, and master the art of the interview.
+            <p class="text-base md:text-xl text-slate-400 mb-10 leading-relaxed max-w-2xl mx-auto" data-i18n="heroSubtitle">
+                Strive is an AI-powered interview mentor engineered to bridge the gap between preparation and performance. Practice with high-fidelity voice simulations, receive data-driven feedback.
             </p>
-            <button onclick="openWaitlist('Hero Banner')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-full font-bold text-lg inline-flex items-center gap-2 transition-all transform hover:scale-105 shadow-lg shadow-indigo-500/20" data-i18n="heroBtn">
+            <button onclick="openWaitlist('Hero Banner')" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-full font-bold text-lg inline-flex items-center justify-center gap-2 transition-all transform hover:scale-105 shadow-lg shadow-indigo-500/20" data-i18n="heroBtn">
                 🚀 Get Early Access
             </button>
         </div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-indigo-500/10 rounded-full blur-[80px] sm:blur-[120px]"></div>
     </section>
 
-    <section id="features-detail" class="py-24 px-6 bg-[#0B0E14]">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
-            <div class="space-y-4">
+    <section id="features-detail" class="py-16 sm:py-24 px-6 bg-[#0B0E14]">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="space-y-4 text-center md:text-left">
                 <div class="text-indigo-500 text-3xl">🎙️</div>
                 <h3 class="text-xl font-bold" data-i18n="voiceLabel">Ultra-Realistic Voice</h3>
                 <p class="text-slate-400 text-sm leading-relaxed" data-i18n="voiceText">Natural voice simulations with low latency to replicate the pressure of a real interview.</p>
             </div>
-            <div class="space-y-4">
+            <div class="space-y-4 text-center md:text-left">
                 <div class="text-indigo-500 text-3xl">📄</div>
                 <h3 class="text-xl font-bold" data-i18n="CVlabel">CV Deep Integration</h3>
                 <p class="text-slate-400 text-sm leading-relaxed" data-i18n="CVtext">Send us your resume and let our AI generate specific technical questions related to your professional background.</p>
             </div>
-            <div class="space-y-4">
+            <div class="space-y-4 text-center md:text-left">
                 <div class="text-indigo-500 text-3xl">📈</div>
                 <h3 class="text-xl font-bold" data-i18n="analyticsLabel">Actionable Analytics</h3>
                 <p class="text-slate-400 text-sm leading-relaxed" data-i18n="analyticsText">Not just feedback, but a detailed action plan with areas for improvement and metrics for progress.</p>
@@ -75,20 +78,21 @@
         </div>
     </section>
 
-    <section id="pricing" class="py-24 px-6 slate-gradient">
+    <section id="pricing" class="py-16 sm:py-24 px-6 slate-gradient">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-16" data-i18n="pricingHeader">Planned Pricing (Coming Soon)</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-3xl p-8 text-slate-900 flex flex-col h-full shadow-2xl opacity-80">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 sm:mb-16" data-i18n="pricingHeader">Planned Pricing (Coming Soon)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-3xl p-8 text-slate-900 flex flex-col h-full shadow-2xl opacity-90 order-2 md:order-1">
                     <h3 class="text-2xl font-bold mb-2" data-i18n="tier1Name">Pro 7 Days</h3>
                     <div class="text-4xl font-extrabold mb-8" data-i18n="plan7Price">$14.99 <span class="text-sm font-medium text-slate-400" data-i18n="once">once</span></div>
                     <ul class="space-y-3 mb-8 text-sm text-slate-600">
                         <li data-i18n="tier1_f1">✓ 7 days of full access</li>
                         <li data-i18n="tier1_f2">✓ AI voice simulations</li>
                     </ul>
-                    <button onclick="openWaitlist('Pro 7 Days')" class="w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition" data-i18n="notifyBtn">Notify Me</button>
+                    <button onclick="openWaitlist('Pro 7 Days')" class="mt-auto w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition" data-i18n="notifyBtn">Notify Me</button>
                 </div>
-                <div class="bg-white rounded-3xl p-8 text-slate-900 flex flex-col h-full shadow-2xl ring-4 ring-indigo-500/50 transform md:-translate-y-4">
+                
+                <div class="bg-white rounded-3xl p-8 text-slate-900 flex flex-col h-full shadow-2xl ring-4 ring-indigo-500/50 transform md:-translate-y-4 z-10 order-1 md:order-2">
                     <div class="bg-indigo-600 text-white text-[10px] uppercase tracking-widest font-bold py-1 px-3 rounded-full self-start mb-4" data-i18n="popular">Most Popular</div>
                     <h3 class="text-2xl font-bold mb-2" data-i18n="tier2Name">Pro Monthly</h3>
                     <div class="text-4xl font-extrabold mb-8" data-i18n="planMonthlyPrice">$29.99 <span class="text-sm font-medium text-slate-400">/mo</span></div>
@@ -96,54 +100,49 @@
                         <li data-i18n="tier2_f1">✓ Unlimited simulations</li>
                         <li data-i18n="tier2_f2">✓ STAR method analysis</li>
                     </ul>
-                    <button onclick="openWaitlist('Pro Monthly')" class="w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition" data-i18n="notifyBtn">Notify Me</button>
+                    <button onclick="openWaitlist('Pro Monthly')" class="mt-auto w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition" data-i18n="notifyBtn">Notify Me</button>
                 </div>
-                <div class="bg-white rounded-3xl p-8 text-slate-900 flex flex-col h-full shadow-2xl opacity-80">
+
+                <div class="bg-white rounded-3xl p-8 text-slate-900 flex flex-col h-full shadow-2xl opacity-90 order-3">
                     <h3 class="text-2xl font-bold mb-2" data-i18n="tier3Name">Pro BYOK</h3>
                     <div class="text-4xl font-extrabold mb-8" data-i18n="planByokPrice">$8.99 <span class="text-sm font-medium text-slate-400">/mo</span></div>
                     <ul class="space-y-3 mb-8 text-sm text-slate-600">
                         <li data-i18n="tier3_f1">✓ Use your own API Key</li>
                         <li data-i18n="tier3_f2">✓ Reduced platform cost</li>
                     </ul>
-                    <button onclick="openWaitlist('Pro BYOK')" class="w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition" data-i18n="notifyBtn">Notify Me</button>
+                    <button onclick="openWaitlist('Pro BYOK')" class="mt-auto w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition" data-i18n="notifyBtn">Notify Me</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <div id="waitlistModal" class="fixed inset-0 z-[60] hidden flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm">
-        <div class="bg-[#1e293b] p-8 rounded-3xl max-w-md w-full border border-white/10 shadow-2xl modal-animate">
-            <h3 class="text-2xl font-bold mb-4" data-i18n="modalTitle">Join the Waitlist</h3>
+    <div id="waitlistModal" class="fixed inset-0 z-[60] hidden flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm">
+        <div class="bg-[#1e293b] p-6 sm:p-8 rounded-3xl max-w-md w-full border border-white/10 shadow-2xl modal-animate overflow-y-auto max-h-[90vh]">
+            <h3 class="text-xl sm:text-2xl font-bold mb-4" data-i18n="modalTitle">Join the Waitlist</h3>
             <p class="text-slate-400 mb-6 text-sm" data-i18n="modalDesc">Enter your details to receive an invite for the Early Access.</p>
             <form id="waitlistForm" class="space-y-4">
                 <input type="text" name="b_phone" class="hidden-field" tabindex="-1" autocomplete="off">
-                
-                <input type="text" id="userName" required placeholder="First Name" class="w-full px-4 py-3 bg-black/20 border border-white/10 rounded-xl focus:border-indigo-500 outline-none text-white">
-                
-                <input type="email" id="userEmail" required placeholder="your@email.com" class="w-full px-4 py-3 bg-black/20 border border-white/10 rounded-xl focus:border-indigo-500 outline-none text-white">
-                <button type="submit" id="submitBtn" class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 rounded-xl font-bold transition" data-i18n="confirmBtn">Confirm</button>
+                <input type="text" id="userName" required placeholder="First Name" class="w-full px-4 py-3 bg-black/20 border border-white/10 rounded-xl focus:border-indigo-500 outline-none text-white text-base">
+                <input type="email" id="userEmail" required placeholder="your@email.com" class="w-full px-4 py-3 bg-black/20 border border-white/10 rounded-xl focus:border-indigo-500 outline-none text-white text-base">
+                <button type="submit" id="submitBtn" class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 rounded-xl font-bold transition">Confirm</button>
             </form>
             <button onclick="closeModal()" class="mt-4 text-slate-500 text-sm hover:text-white w-full text-center" data-i18n="closeBtn">Close</button>
         </div>
     </div>
 
-    <div id="successModal" class="fixed inset-0 z-[70] hidden flex items-center justify-center p-6 bg-black/90 backdrop-blur-md">
-        <div class="bg-[#1e293b] p-8 rounded-3xl max-sm w-full border border-indigo-500/30 text-center shadow-[0_0_50px_-12px_rgba(79,70,229,0.5)] modal-animate">
-            <div class="w-20 h-20 bg-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span class="text-4xl">🚀</span>
+    <div id="successModal" class="fixed inset-0 z-[70] hidden flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-md">
+        <div class="bg-[#1e293b] p-6 sm:p-8 rounded-3xl max-w-sm w-full border border-indigo-500/30 text-center shadow-[0_0_50px_-12px_rgba(79,70,229,0.5)] modal-animate">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 bg-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span class="text-3xl sm:text-4xl">🚀</span>
             </div>
-            <h3 class="text-2xl font-bold mb-2 text-white" data-i18n="successTitle">You're on the list!</h3>
-            <p class="text-slate-400 mb-8 leading-relaxed" data-i18n="successDesc">
-                We'll reach out as soon as we're ready for the Early Access.
-            </p>
-            <button onclick="closeSuccessModal()" class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 rounded-xl font-bold transition-all transform hover:scale-105" data-i18n="successBtn">
-                Great, thanks!
-            </button>
+            <h3 class="text-xl sm:text-2xl font-bold mb-2 text-white" data-i18n="successTitle">You're on the list!</h3>
+            <p class="text-slate-400 mb-8 leading-relaxed text-sm" data-i18n="successDesc">We'll reach out as soon as we're ready for the Early Access.</p>
+            <button onclick="closeSuccessModal()" class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 rounded-xl font-bold transition-all">Great, thanks!</button>
         </div>
     </div>
 
-    <footer class="bg-[#0B0E14] py-12 px-6 border-t border-white/5 text-center">
-        <p class="text-slate-500 text-sm" data-i18n="footer">© 2025 Strive AI. All rights reserved. Currently in development phase.</p>
+    <footer class="bg-[#0B0E14] py-8 sm:py-12 px-6 border-t border-white/5 text-center">
+        <p class="text-slate-500 text-xs sm:text-sm" data-i18n="footer">© 2025 Strive AI. All rights reserved. Currently in development phase.</p>
     </footer>
 
     <script>
