@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRIVE | Master your AI Interview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hero-gradient { background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); }
+        .modal-animate { animation: fadeIn 0.3s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        .hidden-field { display: none !important; visibility: hidden !important; }
+        [data-i18n] { transition: opacity 0.2s; }
+    </style>
+</head>
+<body class="bg-[#0B0E14] text-white antialiased">
+
+    <header class="fixed top-0 w-full z-50 bg-[#0B0E14]/80 backdrop-blur-md border-b border-white/10">
+        <div id="dev-banner" class="w-full bg-amber-300 text-black text-center text-sm py-2 px-4 font-bold" data-i18n="devBanner">
+            🛠️ UNDER DEVELOPMENT: We are currently architecting the Strive engine. Join the waitlist for the Early Access.
+        </div>
+        
+        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-indigo-600 p-1.5 rounded-lg">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <span class="text-xl font-bold tracking-tight">STRIVE</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+                <a href="#features" class="hover:text-white transition" data-i18n="navFeatures">Features</a>
+                <a href="#pricing" class="hover:text-white transition" data-i18n="navPricing">Pricing</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="features" class="relative pt-40 pb-20 px-6 hero-gradient overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6" data-i18n="heroTitle">
+                Master the conversation & <br>
+                <span class="text-indigo-400">Land the job.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 mb-10 leading-relaxed" data-i18n="heroSubtitle">
+                Strive is an AI interview mentor currently <strong>under development</strong>. 
+                Designed to help you prepare through realistic simulations and intelligent feedback.
+            </p>
+            <button onclick="openWaitlist('Hero Banner')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-full font-bold text-lg inline-flex items-center gap-2 transition-all transform hover:scale-105 shadow-lg shadow-indigo-500/20" data-i18n="heroBtn">
+                🚀 Get Early Access
+            </button>
+        </div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px]"></div>
+    </section>
+
+    <section id="pricing" class="py-24 px-6 bg-[#0B0E14]">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16" data-i18n="pricingHeader">Planned Pricing (Coming Soon)</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-3xl p-8 text-slate-900 flex flex-col h-full shadow-2xl opacity-80">
+                    <h3 class="text-2xl font-bold mb-2" data-i18n="tier1Name">Pro 7 Days</h3>
+                    <div class="text-4xl font-extrabold mb-8" data-i18n="plan7Price">$14.99 <span class="text-sm font-medium text-slate-400" data-i18n="once">once</span></div>
+                    <ul class="space-y-3 mb-8 text-sm text-slate-600">
+                        <li data-i18n="tier1_f1">✓ 7 days of full access</li>
+                        <li data-i18n="tier1_f2">✓ AI voice simulations</li>
+                    </ul>
+                    <button onclick="openWaitlist('Pro 7 Days')" class="w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition" data-i18n="notifyBtn">Notify Me</button>
+                </div>
+                <div class="bg-white rounded-3xl p-8 text-slate-900 flex flex-col h-full shadow-2xl ring-4 ring-indigo-500/50 transform md:-translate-y-4">
+                    <div class="bg-indigo-600 text-white text-[10px] uppercase tracking-widest font-bold py-1 px-3 rounded-full self-start mb-4" data-i18n="popular">Most Popular</div>
+                    <h3 class="text-2xl font-bold mb-2" data-i18n="tier2Name">Pro Monthly</h3>
+                    <div class="text-4xl font-extrabold mb-8" data-i18n="planMonthlyPrice">$29.99 <span class="text-sm font-medium text-slate-400">/mo</span></div>
+                    <ul class="space-y-3 mb-8 text-sm text-slate-600">
+                        <li data-i18n="tier2_f1">✓ Unlimited simulations</li>
+                        <li data-i18n="tier2_f2">✓ STAR method analysis</li>
+                    </ul>
+                    <button onclick="openWaitlist('Pro Monthly')" class="w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition" data-i18n="notifyBtn">Notify Me</button>
+                </div>
+                <div class="bg-white rounded-3xl p-8 text-slate-900 flex flex-col h-full shadow-2xl opacity-80">
+                    <h3 class="text-2xl font-bold mb-2" data-i18n="tier3Name">Pro BYOK</h3>
+                    <div class="text-4xl font-extrabold mb-8" data-i18n="planByokPrice">$8.99 <span class="text-sm font-medium text-slate-400">/mo</span></div>
+                    <ul class="space-y-3 mb-8 text-sm text-slate-600">
+                        <li data-i18n="tier3_f1">✓ Use your own API Key</li>
+                        <li data-i18n="tier3_f2">✓ Reduced platform cost</li>
+                    </ul>
+                    <button onclick="openWaitlist('Pro BYOK')" class="w-full py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition" data-i18n="notifyBtn">Notify Me</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="waitlistModal" class="fixed inset-0 z-[60] hidden flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm">
+        <div class="bg-[#1e293b] p-8 rounded-3xl max-w-md w-full border border-white/10 shadow-2xl modal-animate">
+            <h3 class="text-2xl font-bold mb-4" data-i18n="modalTitle">Join the Waitlist</h3>
+            <p class="text-slate-400 mb-6 text-sm" data-i18n="modalDesc">Enter your details to receive an invite for the Early Access.</p>
+            <form id="waitlistForm" class="space-y-4">
+                <input type="text" name="b_phone" class="hidden-field" tabindex="-1" autocomplete="off">
+                
+                <input type="text" id="userName" required placeholder="First Name" class="w-full px-4 py-3 bg-black/20 border border-white/10 rounded-xl focus:border-indigo-500 outline-none text-white">
+                
+                <input type="email" id="userEmail" required placeholder="your@email.com" class="w-full px-4 py-3 bg-black/20 border border-white/10 rounded-xl focus:border-indigo-500 outline-none text-white">
+                <button type="submit" id="submitBtn" class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 rounded-xl font-bold transition" data-i18n="confirmBtn">Confirm</button>
+            </form>
+            <button onclick="closeModal()" class="mt-4 text-slate-500 text-sm hover:text-white w-full text-center" data-i18n="closeBtn">Close</button>
+        </div>
+    </div>
+
+    <div id="successModal" class="fixed inset-0 z-[70] hidden flex items-center justify-center p-6 bg-black/90 backdrop-blur-md">
+        <div class="bg-[#1e293b] p-8 rounded-3xl max-sm w-full border border-indigo-500/30 text-center shadow-[0_0_50px_-12px_rgba(79,70,229,0.5)] modal-animate">
+            <div class="w-20 h-20 bg-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span class="text-4xl">🚀</span>
+            </div>
+            <h3 class="text-2xl font-bold mb-2 text-white" data-i18n="successTitle">You're on the list!</h3>
+            <p class="text-slate-400 mb-8 leading-relaxed" data-i18n="successDesc">
+                We'll reach out as soon as we're ready for the Early Access.
+            </p>
+            <button onclick="closeSuccessModal()" class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 rounded-xl font-bold transition-all transform hover:scale-105" data-i18n="successBtn">
+                Great, thanks!
+            </button>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 py-12 px-6 border-t border-white/5 text-center">
+        <p class="text-slate-500 text-sm" data-i18n="footer">© 2025 Strive AI. All rights reserved. Currently in development phase.</p>
+    </footer>
+
+    <script>
+        const translations = {
+            'pt-BR': {
+                devBanner: '🛠️ EM DESENVOLVIMENTO: Estamos arquitetando o motor do Strive. Entre na lista para Acesso Antecipado',
+                navFeatures: 'Recursos',
+                navPricing: 'Preços',
+                heroTitle: 'Domine a conversa & <br> <span class="text-indigo-400">Conquiste a vaga.</span>',
+                heroSubtitle: 'Strive é um mentor de entrevistas com IA em <strong>desenvolvimento</strong>. Projetado para te preparar com simulações realistas.',
+                heroBtn: '🚀 Obter Acesso Antecipado',
+                pricingHeader: 'Preços Planejados (Em Breve)',
+                tier1Name: 'Pro 7 Dias',
+                once: 'único',
+                tier1_f1: '✓ 7 dias de acesso total',
+                tier1_f2: '✓ Simulações de voz com IA',
+                notifyBtn: 'Me Avise',
+                popular: 'Mais Popular',
+                tier2Name: 'Pro Mensal',
+                tier2_f1: '✓ Simulações ilimitadas',
+                tier2_f2: '✓ Análise do método STAR',
+                tier3Name: 'Pro BYOK',
+                tier3_f1: '✓ Use sua própria chave API',
+                tier3_f2: '✓ Custo de plataforma reduzido',
+                modalTitle: 'Entre na Lista de Espera',
+                modalDesc: 'Preencha seus dados para receber um convite para o lançamento do acesso antecipado.',
+                confirmBtn: 'Confirmar',
+                closeBtn: 'Fechar',
+                successTitle: 'Você está na lista!',
+                successDesc: 'Entraremos em contato assim que estivermos prontos para o lançamento do acesso antecipado.',
+                successBtn: 'Excelente, obrigado!',
+                footer: '© 2025 Strive AI. Todos os direitos reservados. Atualmente em fase de desenvolvimento.',
+                processing: 'Processando...',
+                alreadyOnList: 'Você já está na nossa lista! Fique atento ao seu e-mail.',
+                plan7Price: '84,99 R$',
+                planByokPrice: '49,99 R$',
+                planMonthlyPrice: '169,99 R$',
+                placeholderName: 'Primeiro Nome'
+            }
+        };
+
+        function applyLanguage() {
+            const userLang = navigator.language;
+            if (userLang === 'pt-BR' && translations['pt-BR']) {
+                const texts = translations['pt-BR'];
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (texts[key]) el.innerHTML = texts[key];
+                });
+                // Traduz o placeholder do nome
+                document.getElementById('userName').placeholder = texts.placeholderName;
+                document.documentElement.lang = 'pt';
+            }
+        }
+
+        const SUPABASE_URL = 'https://qnevpitqoydbiteowlog.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFuZXZwaXRxb3lkYml0ZW93bG9nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYwMjY0MzYsImV4cCI6MjA4MTYwMjQzNn0.Iz_Wc9c4WVP_TR_RgQjK_Kihlv-htc77TML5EEwEYXg';
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        
+        let selectedTier = 'General';
+        let isProcessing = false;
+
+        window.onload = applyLanguage;
+
+        function openWaitlist(tier) {
+            selectedTier = tier;
+            document.getElementById('waitlistModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('waitlistModal').classList.add('hidden');
+        }
+
+        function showSuccessModal() {
+            document.getElementById('successModal').classList.remove('hidden');
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
+
+        document.getElementById('waitlistForm').onsubmit = async (e) => {
+            e.preventDefault();
+            if (e.target.elements.b_phone.value !== "" || isProcessing) return;
+
+            const isPt = navigator.language === 'pt-BR';
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const btn = document.getElementById('submitBtn');
+
+            isProcessing = true;
+            btn.disabled = true;
+            btn.innerText = isPt ? translations['pt-BR'].processing : 'Processing...';
+
+            try {
+                const { error } = await supabaseClient
+                    .from('leads')
+                    .insert([{ 
+                        email: email, 
+                        first_name: name, // Enviando o nome para o banco
+                        tier: selectedTier 
+                    }]);
+
+                if (error) {
+                    if (error.code === '23505') {
+                        alert(isPt ? translations['pt-BR'].alreadyOnList : 'You are already on our list!');
+                        completeRegistration();
+                    } else {
+                        alert('Error / Erro');
+                        console.error(error);
+                    }
+                } else {
+                    completeRegistration();
+                }
+            } catch (err) {
+                console.error(err);
+            } finally {
+                isProcessing = false;
+                btn.disabled = false;
+                btn.innerText = isPt ? translations['pt-BR'].confirmBtn : 'Confirm';
+            }
+        };
+
+        function completeRegistration() {
+            closeModal();
+            showSuccessModal();
+            document.getElementById('waitlistForm').reset();
+        }
+    </script>
+</body>
+</html>
